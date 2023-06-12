@@ -1,7 +1,10 @@
 const User = require('../models/User');
 
 exports.login = (req, res) => {
-
+    let user = new User(req.body)
+    user.login(function(result){
+        res.send(result);
+    });
 }
 
 exports.logout = (req, res) => {
@@ -17,6 +20,7 @@ exports.register = (req, res) => {
         res.send("Congrats!");
     }
 }
+
 
 exports.home = (req, res) => {
     res.render('home-guest');
